@@ -19,4 +19,10 @@ abstract contract BeforeAfter is Setup {
     function __after() internal {
 
     }
+
+    modifier updateGhosts {
+        __before();
+        _;
+        __after();
+    }
 }
