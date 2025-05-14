@@ -872,7 +872,7 @@ contract RewardsManager is ReentrancyGuard {
     /// @param amount - How much of the token to add
     function addReward(uint256 epochId, address vault, address token, uint256 amount) external nonReentrant {
         uint256 cachedCurrentEpoch = currentEpoch();
-        require(epochId >= currentEpoch(), "Cannot add to past");
+        require(epochId >= cachedCurrentEpoch, "Cannot add to past");
         require(vault != address(0), "youtu.be/F3L376eH09Q");
 
         // Check change in balance to support `feeOnTransfer` tokens as well
